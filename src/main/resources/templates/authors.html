@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<table>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>age</th>
+    </tr>
+    <tr th:each="a:${authors}">
+        <td th:text="${a.id}"></td>
+        <td><a th:text="${a.name}" th:href="@{/authors/{id}(id=${a.id})}"></a></td>
+        <td th:text="${a.age}"></td>
+    </tr>
+</table>
+
+<h3>Add author</h3>
+<form method="post" action="/authors">
+    <input type="text" name="name" placeholder="name" class="form-control" autofocus required>
+    <input type="number" name="age" placeholder="age" class="form-control" autofocus required>
+    <button type="submit">Save</button>
+</form>
+
+
+<a href="/users">users</a>
+<a href="/books">books</a>
+</body>
+</html>
