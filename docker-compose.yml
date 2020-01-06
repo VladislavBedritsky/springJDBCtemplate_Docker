@@ -1,0 +1,37 @@
+version: "3"
+
+services:
+
+  ex:
+    container_name: ex_cont
+    image: ex
+    ports:
+      - "8080:8080"
+    networks:
+      - empl-mysql
+    depends_on:
+      - mysqldb
+
+  mysqldb:
+    container_name: mysql1
+    command:
+      - cd "d:/workJava/springJDBCtemplate/src/main/resources"
+      - docker cp shema.sql mysql1:/shema.sql
+      - docker cp data.sql mysql1:/data.sql
+      - cd d:/workJava/springJDBCtemplate
+      - docker container exec -it mysql1 bash
+      - mysql -uroot -proot
+      - use springjdbc;
+      - source shema.sql
+      - source data.sql
+      - exit;
+      - exit
+    image: mysql:latest
+    networks:
+      - empl-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=springjdbc
+
+networks:
+  empl-mysql:
