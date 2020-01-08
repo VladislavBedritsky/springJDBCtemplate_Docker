@@ -1,31 +1,27 @@
 mvn clean install
+docker-compose up
 
-docker network create empl-mysql
+#### Run script commands
 
-docker image build -f dockerfile-mysql/Dockerfile -t mysql:latest .
-docker image build -f dockerfile-ex/Dockerfile -t ex .
+# 1. chmod +x ./script.sh && ./script.sh
+# 2. wait...
+# (If there is an error during initialization, run again a command - "docker-compose up" )
 
-docker container run --name localhost --network empl-mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=springjdbc -d mysql:latest
-docker container run --name ex --network empl-mysql -p 8080:8080 -d ex
+#### Steps for sql.scripts (after initializing springApp)
 
-docker cp ./src/main/resources/data.sql localhost:/data.sql
-docker cp ./src/main/resources/shema.sql localhost:/shema.sql
+# 3. cd d:/workJava/springJDBCtemplate/
+# 4. docker cp ./src/main/resources/data.sql mysqldb:/data.sql
+# 5. docker cp ./src/main/resources/schema.sql mysqldb:/schema.sql
+# 6. docker container exec -it mysqldb bash
+# 7. mysql -uroot -proot
+# 8. use springjdbc;
+# 9. source schema.sql
+# 10. source data.sql
+# 11. select * from users;
+# 12. exit;
+# 13. exit
+# 14. open app http://"your_machine_IP":8080/
 
-docker container exec -it localhost bash
 
-
-#### Steps for Docker
-
-# 1. chmod +x ./script.sh
-# 2. ./script.sh
-
-#### Steps for sql.scripts
-
-# 3. mysql -uroot -proot
-# 4. use springjdbc;
-# 5. source shema.sql
-# 6. source data.sql
-# 7. exit;
-# 8. exit
-
-# 9. open app http://"your_machine_IP":8080/
+#### DELETE images, containers, networks
+# docker stop ex && docker stop mysqldb && docker rm ex && docker rm mysqldb && docker rmi ex mysql openjdk && docker network rm springjdbctemplate_empl-mysql
