@@ -13,9 +13,6 @@ import java.util.List;
 public class BookServiceImpl implements BookService {
 
     @Autowired
-    private BookDaoImpl bookDaoImpl;
-
-    @Autowired
     private DaoProvider daoProvider;
 
 

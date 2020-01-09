@@ -19,4 +19,5 @@ public interface BookService {
     void delete(Integer id);
 
     List<Book> findBooksByAuthorId(Integer id);
+
 }

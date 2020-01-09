@@ -1,15 +1,13 @@
 package com.htp.ex.model;
 
-import java.util.List;
-
 public class User {
 
     private Integer id;
     private String name;
     private String email;
     private Integer age;
-
-    private List<BookPurchase> purchaseList;
+    private City city;
+    private Account account;
 
     public User () {}
 
@@ -51,12 +49,20 @@ public class User {
         this.age = age;
     }
 
-    public List<BookPurchase> getPurchaseList() {
-        return purchaseList;
+    public City getCity() {
+        return city;
     }
 
-    public void setPurchaseList(List<BookPurchase> purchaseList) {
-        this.purchaseList = purchaseList;
+    public void setCity(City city) {
+        this.city = city;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     @Override

@@ -1,18 +1,10 @@
 package com.htp.ex.model;
 
-public class Book {
+public class City {
 
     private Integer id;
     private String name;
-    private Author author;
-
-    public Book () {
-    }
-
-    public Book (String name, Author author) {
-        this.name = name;
-        this.author = author;
-    }
+    private Country country;
 
     public Integer getId() {
         return id;
@@ -30,12 +22,11 @@ public class Book {
         this.name = name;
     }
 
-    public Author getAuthor() {
-        return author;
+    public Country getCountry() {
+        return country;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
+    public void setCountry(Country country) {
+        this.country = country;
     }
-
 }

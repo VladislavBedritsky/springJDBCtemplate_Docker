@@ -24,13 +24,12 @@ public class BookController {
     @PostMapping
     public String saveBook (
             @RequestParam String name,
-            @RequestParam Integer price,
             @RequestParam Integer author_id
     ) {
 
         Author author = serviceProvider.getAuthorService().findById(author_id);
 
-        Book book = new Book(name,price,author);
+        Book book = new Book(name,author);
         serviceProvider.getBookService().save(book);
 
         return "redirect:/books";
@@ -40,6 +39,10 @@ public class BookController {
     public String getBookById (Model model,
                                @PathVariable Integer id) {
         model.addAttribute("book",serviceProvider.getBookService().findBookById(id));
+        model.addAttribute("shops_by_book_id",
+                serviceProvider
+                .getBookPriceService()
+                .findAllShopsWithCountriesAndCitiesAndAccountsAndAuthorsWithCitiesAndCountriesByBookId(id));
 
         return "book";
     }

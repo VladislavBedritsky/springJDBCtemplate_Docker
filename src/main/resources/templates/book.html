@@ -10,21 +10,44 @@
     <tr>
         <th>id</th>
         <th>name</th>
-        <th>price</th>
     </tr>
     <tr>
         <td th:text="${book.id}"></td>
         <td th:text="${book.name}"></td>
-        <td th:text="${book.price}"></td>
+
     </tr>
 </table>
 
 <h3>Update book</h3>
 <form method="post" th:action="@{/books/update/{id}(id=${book.id})}">
     <input type="text" name="name" placeholder="name" class="form-control" autofocus required>
-    <input type="number" name="price" placeholder="price" class="form-control" autofocus required>
     <button type="submit">Update</button>
 </form>
+
+<h3>Shops</h3>
+
+<table>
+    <tr>
+        <th>book_price</th>
+        <th>sh_name</th>
+        <th>sh_city</th>
+        <th>sh_country</th>
+        <th>sh_account</th>
+        <th>-</th>
+        <th>aut_name</th>
+        <th>aut_city</th>
+        <th>aut_country</th>
+    </tr>
+    <tr th:each="s:${shops_by_book_id}">
+        <td th:text="${s.shop.name}"></td>
+        <td th:text="${s.shop.city.name}"></td>
+        <td th:text="${s.shop.city.country.name}"></td>
+        <td>|</td>
+        <td th:text="${s.book.author.name}"></td>
+        <td th:text="${s.book.author.city.name}"></td>
+        <td th:text="${s.book.author.city.country.name}"></td>
+    </tr>
+</table>
 
 <a href="/books">books</a>
 

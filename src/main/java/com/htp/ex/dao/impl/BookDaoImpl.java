@@ -18,47 +18,47 @@ public class BookDaoImpl implements BookDao {
 
     @Override
     public List<Book> findAll() {
-        String sql = "select * from books";
+        String sql = "select * from book";
         return jdbcTemplate.query(sql,new BookMapper());
     }
 
     @Override
     public List<Book> findAllBooksAndAuthors() {
-        String sql = "select books.id as b_id, books.name as b_name, books.price as b_price, authors.name as a_name, " +
-                "authors.age as a_age, authors.id as a_id from " +
-                "books join authors on books.author_id = authors.id";
+        String sql = "select book.id as b_id, book.name as b_name, author.name as a_name, " +
+                "author.age as a_age, author.id as a_id from " +
+                "book join author on book.author_id = author.id";
         return jdbcTemplate.query(sql, new BookExtractor());
     }
 
     @Override
     public Book findBookById(Integer id) {
-        String sql = "select * from books where id=?";
+        String sql = "select * from book where id=?";
         return jdbcTemplate.queryForObject(sql,new BookMapper(),id);
     }
 
     @Override
     public void update(Book book) {
-        String sql = "update books set name=?,price=? where id=?";
-        jdbcTemplate.update(sql,book.getName(),book.getPrice(),book.getId());
+        String sql = "update book set name=? where id=?";
+        jdbcTemplate.update(sql,book.getName(),book.getId());
     }
 
     @Override
     public void save(Book book) {
-        String sql = "insert into books (name,price,author_id) values (?,?,?)";
-        jdbcTemplate.update(sql,book.getName(),book.getPrice(),book.getAuthor().getId());
+        String sql = "insert into book (name,author_id) values (?,?)";
+        jdbcTemplate.update(sql,book.getName(),book.getAuthor().getId());
     }
 
     @Override
     public void delete(Integer id) {
-        String sql = "delete from books where id = ?";
+        String sql = "delete from book where id = ?";
         jdbcTemplate.update(sql,id);
     }
 
     @Override
     public List<Book> findBooksByAuthorId(Integer id) {
-        String sql = "select books.id as b_id, books.name as b_name, books.price as b_price, authors.name as a_name, " +
-                "authors.age as a_age, authors.id as a_id from " +
-                "books join authors on books.author_id = authors.id where authors.id = ?";
-        return jdbcTemplate.query(sql, new BookExtractor(),id);
+        String sql = "select book.id as b_id, book.name as b_name, author.name as a_name, " +
+                "author.age as a_age, author.id as a_id from " +
+                "book join author on book.author_id = author.id where author.id = ?";
+        return jdbcTemplate.query(sql, new BookExtractor(), id);
     }
 }

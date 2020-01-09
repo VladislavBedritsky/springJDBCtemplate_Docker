@@ -1,18 +1,9 @@
 package com.htp.ex.model;
 
-public class Book {
+public class Country {
 
     private Integer id;
     private String name;
-    private Author author;
-
-    public Book () {
-    }
-
-    public Book (String name, Author author) {
-        this.name = name;
-        this.author = author;
-    }
 
     public Integer getId() {
         return id;
@@ -29,13 +20,4 @@ public class Book {
     public void setName(String name) {
         this.name = name;
     }
-
-    public Author getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
-
 }

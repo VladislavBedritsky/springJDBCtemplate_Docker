@@ -17,31 +17,31 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public List<User> findAll() {
-        String sql = "select * from users";
+        String sql = "select * from user";
         return jdbcTemplate.query(sql,new UserMapper());
     }
 
     @Override
     public void save(User user) {
-        String sql = "INSERT INTO users (name,email,age) VALUES (?,?,?)";
+        String sql = "INSERT INTO user (name,email,age) VALUES (?,?,?)";
         jdbcTemplate.update(sql, user.getName(),user.getEmail(),user.getAge());
     }
 
     @Override
     public User getById(int id) {
-        String sql = "select * from users where id=?";
+        String sql = "select * from user where id=?";
         return jdbcTemplate.queryForObject(sql,new UserMapper(),id);
     }
 
     @Override
     public void update(User user) {
-        String sql = "update users set name=?, email=?, age=? where id = ?";
+        String sql = "update user set name=?, email=?, age=? where id = ?";
         jdbcTemplate.update(sql, user.getName(),user.getEmail(),user.getAge(), user.getId());
     }
 
     @Override
     public void delete(int id) {
-        String sql = "delete from users where id=?";
+        String sql = "delete from user where id=?";
         jdbcTemplate.update(sql, id);
     }
 

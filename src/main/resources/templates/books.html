@@ -10,14 +10,12 @@
     <tr>
         <th>id</th>
         <th>name</th>
-        <th>price</th>
         <th>author name</th>
         <th>delete</th>
     </tr>
     <tr th:each="book:${books}">
         <td><a th:text="${book.id}" th:href="@{/books/{id}(id=${book.id})}"></a></td>
         <td th:text="${book.name}"></td>
-        <td th:text="${book.price}"></td>
         <td><a th:text="${book.author.name}" th:href="@{/authors/{id}(id=${book.author.id})}"></a></td>
         <td><a th:href="@{/books/delete/{id}(id=${book.id})}">x</a></td>
     </tr>
@@ -26,7 +24,6 @@
 <h3>Add book</h3>
 <form method="post" action="/books">
     <input type="text" name="name" placeholder="name" class="form-control" autofocus required>
-    <input type="number" name="price" placeholder="price" class="form-control" autofocus required>
     <input type="number" name="author_id" placeholder="author_id" class="form-control" autofocus required>
     <button type="submit">Save</button>
 </form>

@@ -1,6 +1,5 @@
 package com.htp.ex.mapper;
 
-import com.htp.ex.model.Author;
 import com.htp.ex.model.Book;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -15,7 +14,6 @@ public class BookMapper implements RowMapper<Book> {
         Book book = new Book();
         book.setId(resultSet.getInt("id"));
         book.setName(resultSet.getString("name"));
-        book.setPrice(resultSet.getInt("price"));
 
         return book;
     }

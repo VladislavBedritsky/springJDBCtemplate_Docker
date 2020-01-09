@@ -28,13 +28,11 @@
     <tr>
         <th>id</th>
         <th>name</th>
-        <th>price</th>
         <th>author_name</th>
     </tr>
     <tr th:each="b:${author_books}">
         <td th:text="${b.id}"></td>
         <td th:text="${b.name}"></td>
-        <td th:text="${b.price}"></td>
         <td th:text="${b.author.name}"></td>
     </tr>
 </table>

@@ -1,8 +1,6 @@
 package com.htp.ex.dao;
 
-import com.htp.ex.dao.impl.AuthorDaoImpl;
-import com.htp.ex.dao.impl.BookDaoImpl;
-import com.htp.ex.dao.impl.UserDaoImpl;
+import com.htp.ex.dao.impl.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +16,11 @@ public class DaoProvider {
     @Autowired
     private BookDao bookDao = new BookDaoImpl();
 
+    @Autowired
+    private ShopDao shopDao = new ShopDaoImpl();
+
+    @Autowired
+    private BookPriceDao bookPriceDao = new BookPriceDaoImpl();
 
     public UserDao getUserDao() {
         return userDao;
@@ -31,4 +34,11 @@ public class DaoProvider {
         return bookDao;
     }
 
+    public ShopDao getShopDao() {
+        return shopDao;
+    }
+
+    public BookPriceDao getBookPriceDao() {
+        return bookPriceDao;
+    }
 }

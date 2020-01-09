@@ -1,8 +1,7 @@
 package com.htp.ex.service;
 
-import com.htp.ex.service.impl.AuthorServiceImpl;
-import com.htp.ex.service.impl.BookServiceImpl;
-import com.htp.ex.service.impl.UserServiceImpl;
+import com.htp.ex.dao.ShopDao;
+import com.htp.ex.service.impl.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +17,12 @@ public class ServiceProvider {
     @Autowired
     private UserService userService = new UserServiceImpl();
 
+    @Autowired
+    private ShopService shopService = new ShopServiceImpl();
+
+    @Autowired
+    private BookPriceService bookPriceService = new BookPriceServiceImpl();
+
     public AuthorService getAuthorService() {
         return authorService;
     }
@@ -28,5 +33,13 @@ public class ServiceProvider {
 
     public UserService getUserService() {
         return userService;
+    }
+
+    public ShopService getShopService() {
+        return shopService;
+    }
+
+    public BookPriceService getBookPriceService() {
+        return bookPriceService;
     }
 }

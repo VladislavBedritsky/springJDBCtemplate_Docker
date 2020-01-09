@@ -17,25 +17,25 @@ public class AuthorDaoImpl implements AuthorDao {
 
     @Override
     public Author findById(Integer id) {
-        String sql = "select * from authors where id=?";
+        String sql = "select * from author where id=?";
         return  jdbcTemplate.queryForObject(sql, new AuthorMapper(), id);
     }
 
     @Override
     public List<Author> findAll() {
-        String sql = "select * from authors";
+        String sql = "select * from author";
         return jdbcTemplate.query(sql,new AuthorMapper());
     }
 
     @Override
     public void save(Author author) {
-        String sql = "insert into authors (name,age) values (?,?)";
+        String sql = "insert into author (name,age) values (?,?)";
         jdbcTemplate.update(sql,author.getName(),author.getAge());
     }
 
     @Override
     public void update(Author author) {
-        String sql = "update authors set name=?,age=? where id = ?";
+        String sql = "update author set name=?,age=? where id = ?";
         jdbcTemplate.update(sql,author.getName(),author.getAge(),author.getId());
     }
 }

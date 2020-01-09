@@ -18,7 +18,6 @@ public class BookExtractor implements ResultSetExtractor<List<Book>> {
             Book book = new Book();
             book.setId(resultSet.getInt("b_id"));
             book.setName(resultSet.getString("b_name"));
-            book.setPrice(resultSet.getInt("b_price"));
 
             Author author = new Author();
             author.setId(resultSet.getInt("a_id"));

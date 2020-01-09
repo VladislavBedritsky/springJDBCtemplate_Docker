@@ -1,7 +1,6 @@
 package com.htp.ex.service.impl;
 
 import com.htp.ex.dao.DaoProvider;
-import com.htp.ex.dao.impl.UserDaoImpl;
 import com.htp.ex.model.User;
 import com.htp.ex.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

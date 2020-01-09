@@ -1,13 +1,11 @@
 package com.htp.ex.model;
 
-import java.util.Set;
-
 public class Author {
 
     private Integer id;
     private String name;
     private Integer age;
-    private Set<Book> books;
+    private City city;
 
     public Author() {}
 
@@ -40,11 +38,11 @@ public class Author {
         this.age = age;
     }
 
-    public Set<Book> getBooks() {
-        return books;
+    public City getCity() {
+        return city;
     }
 
-    public void setBooks(Set<Book> books) {
-        this.books = books;
+    public void setCity(City city) {
+        this.city = city;
     }
 }
