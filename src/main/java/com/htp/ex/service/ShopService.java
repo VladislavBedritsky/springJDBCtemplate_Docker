@@ -8,5 +8,4 @@ public interface ShopService {
 
     List<Shop> findAllShopsWithCountriesAndCitiesAndAccounts ();
 
-    List<Shop> findAllShopsWithCountriesAndCitiesAndAccountsAndAuthorsWithCitiesAndCountriesByBookId(Integer id);
 }

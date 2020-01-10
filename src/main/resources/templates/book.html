@@ -39,9 +39,11 @@
         <th>aut_country</th>
     </tr>
     <tr th:each="s:${shops_by_book_id}">
+        <td th:text="${s.price}+' $'"></td>
         <td th:text="${s.shop.name}"></td>
         <td th:text="${s.shop.city.name}"></td>
         <td th:text="${s.shop.city.country.name}"></td>
+        <td th:text="${s.shop.account.amountMoney}+' $'"></td>
         <td>|</td>
         <td th:text="${s.book.author.name}"></td>
         <td th:text="${s.book.author.city.name}"></td>

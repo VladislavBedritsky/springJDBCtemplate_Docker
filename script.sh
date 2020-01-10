@@ -10,14 +10,14 @@ docker-compose up
 #### Steps for sql.scripts (after initializing springApp)
 
 # 3. cd d:/workJava/springJDBCtemplate/
-# 4. docker cp ./src/main/resources/data.sql mysqldb:/data.sql
-# 5. docker cp ./src/main/resources/schema.sql mysqldb:/schema.sql
+# 4. docker cp ./src/main/resources/db/data.sql mysqldb:/data.sql
+# 5. docker cp ./src/main/resources/db/schema.sql mysqldb:/schema.sql
 # 6. docker container exec -it mysqldb bash
 # 7. mysql -uroot -proot
 # 8. use springjdbc;
 # 9. source schema.sql
 # 10. source data.sql
-# 11. select * from users;
+# 11. select * from user;
 # 12. exit;
 # 13. exit
 # 14. open app http://"your_machine_IP":8080/

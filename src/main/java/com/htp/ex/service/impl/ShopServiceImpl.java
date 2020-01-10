@@ -19,8 +19,4 @@ public class ShopServiceImpl implements ShopService {
         return daoProvider.getShopDao().findAllShopsWithCountriesAndCitiesAndAccounts();
     }
 
-    @Override
-    public List<Shop> findAllShopsWithCountriesAndCitiesAndAccountsAndAuthorsWithCitiesAndCountriesByBookId(Integer id) {
-        return daoProvider.getShopDao().findAllShopsWithCountriesAndCitiesAndAccountsAndAuthorsWithCitiesAndCountriesByBookId(id);
-    }
 }
